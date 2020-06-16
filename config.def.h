@@ -37,9 +37,10 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class      instance   title    tags mask     isfloating   monitor */
+//	{ "Gimp",     NULL,      NULL,    0,            1,           -1 },
+//	{ "Firefox",  NULL,      NULL,    1 << 8,       1,           -1 },
+	{ NULL,       "Toolkit", NULL,0,  1,           -1 },
 };
 
 /* layout(s) */
@@ -80,17 +81,20 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask, XK_equal,  spawn,          {.v = dmenuunicodecmd } },
 	{ 0, XF86XK_AudioLowerVolume,  spawn, SHCMD("volume down notif && pkill -SIGRTMIN+10 dwmblocks") },
 	{ 0, XF86XK_AudioRaiseVolume,  spawn, SHCMD("volume up notif && pkill -SIGRTMIN+10 dwmblocks") },
-	{ 0, XF86XK_AudioMute,  spawn, SHCMD("volume toggle notif && pkill -SIGRTMIN+10 dwmblocks") },
+	{ 0, XF86XK_AudioMute,         spawn, SHCMD("volume toggle notif && pkill -SIGRTMIN+10 dwmblocks") },
+	{ 0, XF86XK_MonBrightnessUp,      spawn, SHCMD("brightness up notif && pkill -SIGRTMIN+11 dwmblocks") },
+	{ 0, XF86XK_MonBrightnessDown,    spawn, SHCMD("brightness down notif && pkill -SIGRTMIN+11 dwmblocks") },
 	//{ MODKEY,           XK_b,      togglebar,     {0} },
 	{ MODKEY,           XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,           XK_k,      focusstack,     {.i = -1 } },
+	{ MODKEY|ShiftMask, XK_j,      zoom,           {0} },
+	{ MODKEY|ShiftMask, XK_k,      zoom,           {0} },
 	{ MODKEY,           XK_Down,   focusstack,     {.i = +1 } },
 	{ MODKEY,           XK_Up,     focusstack,     {.i = -1 } },
 	{ MODKEY,           XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask, XK_i,      incnmaster,     {.i = -1 } },
 	{ MODKEY,           XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,           XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask, XK_Return, zoom,           {0} },
 	{ MODKEY,           XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask, XK_q,      killclient,     {0} },
 	{ MODKEY,           XK_t,      setlayout,      {.v = &layouts[0]} },
