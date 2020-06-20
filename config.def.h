@@ -24,7 +24,7 @@ static const char main_color[]      = col_gray1;
 static const char accent_color[]    = col_orange;
 static const char *colors[][3]      = {
 	/*               fg            bg            border   */
-	[SchemeNorm] = { second_color, main_color,   second_color },
+	[SchemeNorm] = { second_color, main_color,   main_color },
 	[SchemeSel]  = { main_color,   accent_color, accent_color  },
 };
 
